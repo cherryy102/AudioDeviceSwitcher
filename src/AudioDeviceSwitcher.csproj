@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Powershell" Version="3.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.Native" Version="7.3.2" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.3.6" />
   </ItemGroup>
 	<ItemGroup>
     <Reference Include="AudioDeviceCmdlets">
