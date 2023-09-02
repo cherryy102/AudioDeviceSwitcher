@@ -8,12 +8,9 @@ if (string.IsNullOrWhiteSpace(currentDevice))
 {
     return;
 }
-
-if (currentDevice == Devices.SpeakersId)
-{
-    script.Execute("Set-AudioDevice", "ID", Devices.HeadphonesId);
+if (currentDevice == Devices.FirstId) {
+    script.Execute("Set-AudioDevice", "ID", Devices.SecondId);
     return;
 }
-script.Execute("Set-AudioDevice", "ID", Devices.SpeakersId);
-
+script.Execute("Set-AudioDevice", "ID", Devices.FirstId);
 script.Stop();

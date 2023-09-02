@@ -3,8 +3,7 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Reflection;
 
-namespace AudioDeviceSwitcher
-{
+namespace AudioDeviceSwitcher {
     internal class Script
     {
         private Runspace? runspace;
@@ -17,7 +16,6 @@ namespace AudioDeviceSwitcher
             {
                 path
             });
-
             runspace = RunspaceFactory.CreateRunspace(iss);
             runspace.Open();
         }
