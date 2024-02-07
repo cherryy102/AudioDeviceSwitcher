@@ -1,12 +1,13 @@
 ﻿using AudioDeviceSwitcher;
 
-var results = PsScript.Execute("Get-AudioDevice", "Playback");
+var powerShellScript = new PowerShellScript();
+var results = powerShellScript.Execute("Get-AudioDevice", "Playback");
 var currentDevice = results?.FirstOrDefault()?.Members["ID"].Value as string;
 if (string.IsNullOrWhiteSpace(currentDevice)) {
     return;
 }
 if (currentDevice == Devices.FirstId) {
-    PsScript.Execute("Set-AudioDevice", "ID", Devices.SecondId);
+    powerShellScript.Execute("Set-AudioDevice", "ID", Devices.SecondId);
     return;
 }
-PsScript.Execute("Set-AudioDevice", "ID", Devices.FirstId);
+powerShellScript.Execute("Set-AudioDevice", "ID", Devices.FirstId);
