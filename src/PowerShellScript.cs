@@ -10,7 +10,7 @@ namespace AudioDeviceSwitcher {
             this.initialSessionState = InitialSessionState.CreateDefault();
         }
 
-        internal void ImportPowersShellModule(params string[] path) {
+        internal void ImportPowerShellModule(params string[] path) {
             initialSessionState.ImportPSModule(path);
         }
 

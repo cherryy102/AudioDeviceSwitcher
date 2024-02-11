@@ -3,7 +3,7 @@ using System.Reflection;
 
 var powerShellScript = new PowerShellScript();
 var audioDeviceLibPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", "AudioDeviceCmdlets.dll");
-powerShellScript.ImportPowersShellModule(audioDeviceLibPath);
+powerShellScript.ImportPowerShellModule(audioDeviceLibPath);
 var results = powerShellScript.Execute("Get-AudioDevice", "Playback");
 var currentDeviceId = results?.FirstOrDefault()?.Members["ID"].Value.ToString();
 if (string.IsNullOrWhiteSpace(currentDeviceId)) {
