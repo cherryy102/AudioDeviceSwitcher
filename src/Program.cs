@@ -1,12 +1,15 @@
 ﻿using AudioDeviceSwitcher;
+using System.Reflection;
 
 var powerShellScript = new PowerShellScript();
+var audioDeviceLibPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", "AudioDeviceCmdlets.dll");
+powerShellScript.ImportPowersShellModule(audioDeviceLibPath);
 var results = powerShellScript.Execute("Get-AudioDevice", "Playback");
-var currentDevice = results?.FirstOrDefault()?.Members["ID"].Value as string;
-if (string.IsNullOrWhiteSpace(currentDevice)) {
+var currentDeviceId = results?.FirstOrDefault()?.Members["ID"].Value.ToString();
+if (string.IsNullOrWhiteSpace(currentDeviceId)) {
     return;
 }
-if (currentDevice == Devices.FirstId) {
+if (currentDeviceId == Devices.FirstId) {
     powerShellScript.Execute("Set-AudioDevice", "ID", Devices.SecondId);
     return;
 }
